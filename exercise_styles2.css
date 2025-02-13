@@ -55,10 +55,6 @@ li {
     color: #333;
 }
 
-.added {
-    color: green; /* Text color for added cities */
-}
-
 h2 {
     margin-top: 20px;
     font-size: 1.5em;
@@ -73,4 +69,9 @@ p {
 .list-header {
     text-align: center; 
     margin-bottom: 30px;
+}
+
+.new-city {
+    color: green;
+    font-weight: bold;
 }
