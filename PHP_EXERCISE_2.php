@@ -16,48 +16,44 @@
         </div>
 
         <div class="content">
-            <div class="column">
-                <h2>List 1</h2>
-                <p>The Initial Array List</p>
-                <?php
-                    $cities = [
-                        "Tokyo", 
-                        "Mexico City", 
-                        "New York City", 
-                        "Mumbai", 
-                        "Seoul", 
-                        "Shanghai", 
-                        "Lagos", 
-                        "Buenos Aires", 
-                        "Cairo", 
-                        "London"
-                    ];
-                    
+            <?php
+                function renderCityList($cities, $newCities = []) {
                     sort($cities);
                     echo "<ul>";
                     foreach ($cities as $city) {
-                        echo "<li>$city</li>";
+                        $class = in_array($city, $newCities) ? 'new-city' : '';
+                        echo "<li class=\"$class\">$city</li>";
                     }
                     echo "</ul>";
-                ?>
+                }
+
+                $initialCities = [
+                    "Tokyo", 
+                    "Mexico City", 
+                    "New York City", 
+                    "Mumbai", 
+                    "Seoul", 
+                    "Shanghai", 
+                    "Lagos", 
+                    "Buenos Aires", 
+                    "Cairo", 
+                    "London"
+                ];
+                
+                $newCities = ["Los Angeles", "Calcutta", "Osaka", "Beijing"];
+                $updatedCities = array_merge($initialCities, $newCities);
+            ?>
+
+            <div class="column">
+                <h2>List 1</h2>
+                <p>The Initial Array List</p>
+                <?php renderCityList($initialCities); ?>
             </div>
 
             <div class="column">
                 <h2>List 2</h2>
                 <p>The Updated Array List with New Cities</p>
-                <?php
-
-                    $newCities = ["Los Angeles", "Calcutta", "Osaka", "Beijing"];
-                    $cities = array_merge($cities, $newCities);
-                    sort($cities);
-
-                    echo "<ul>";
-                    foreach ($cities as $city) {
-                        $class = in_array($city, $newCities) ? 'new-city' : ''; // Highlight new cities
-                        echo "<li class=\"$class\">$city</li>";
-                    }
-                    echo "</ul>";
-                ?>
+                <?php renderCityList($updatedCities, $newCities); ?>
             </div>
         </div>
     </div>
